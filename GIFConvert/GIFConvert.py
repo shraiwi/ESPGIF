@@ -104,7 +104,7 @@ for n in range(im.n_frames):
     frame = frame.transpose(Image.FLIP_LEFT_RIGHT)
     frame = frame.transpose(Image.ROTATE_90)
     
-    frame.save('frames/img' + str(n) + '.png')
+    # frame.save('frames/img' + str(n) + '.png')
 
     print("converting frame" + str(n))
 
