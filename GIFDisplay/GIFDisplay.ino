@@ -1,7 +1,5 @@
-//#include <ESP8266WiFi.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SPITFT.h>
-//#include "Adafruit_SPITFT_Macros.h"
 #include <Adafruit_SSD1351.h>
 #include <SPI.h>
 #include "GIF.h"
@@ -10,17 +8,15 @@
 #define SCREEN_HEIGHT 128
 #define NUM_PIXELS (SCREEN_WIDTH * SCREEN_HEIGHT)
 
-#define SPI_SPEED 24000000
 
+// Replace with your SPI Pins. 
+// SCLK and MOSI definitions are just there for reference, changing those values will not change their actual mappings.
+// BTW, these map to the GPIOs of the ESP8266, not what it says on the board. CHECK YOUR BOARD'S PINOUTS!!!
 #define SCLK_PIN 14
 #define MOSI_PIN 13
 #define DC_PIN   5
 #define CS_PIN   15
 #define RST_PIN  4
-
-//#define DC_PIN   33
-//#define RST_PIN  32
-//#define CS_PIN   15
 
 Adafruit_SSD1351 tft = Adafruit_SSD1351(SCREEN_WIDTH, SCREEN_HEIGHT, &SPI, CS_PIN, DC_PIN, RST_PIN);
 
@@ -36,12 +32,14 @@ void setup() {
   Serial.begin(115200);
   
   tft.begin();
-
-  //WiFi.disconnect();
-  //WiFi.forceSleepBegin();
-
-  displayFrame(10);
-  //displayFrame(0);
+  
+  // Tried to save some power here, lol.
+  // WiFi.disconnect();
+  // WiFi.forceSleepBegin();
+  
+  // Was used for debug
+  // displayFrame(10);
+  // displayFrame(0);
 }
 
 void loop() {
